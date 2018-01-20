@@ -1,11 +1,11 @@
 import React from 'react';
-
+import Search from './Search';
 
 class Main extends React.Component {
 
     render() {
         return (
-            <h1>hello world</h1>
+            <Search />
         );
     }
 }
