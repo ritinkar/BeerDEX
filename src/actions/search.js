@@ -15,9 +15,9 @@ function requestBeers() {
 function receiveBeers(json) {
     return {
         type: RECEIVE_BEERS,
-        beers: json.data.map(child => ({ ...child,
+        beers: json.data?json.data.map(child => ({ ...child,
             isBookmarked: false
-        })),
+        })):[],
         receivedAt: Date.now()
     }
 }
