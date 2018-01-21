@@ -1,2 +1,3 @@
-export const REQUEST_BEERS = 'REQUEST_BEERS'
-export const RECEIVE_BEERS = 'RECEIVE_BEERS'
+export const REQUEST_BEERS = 'REQUEST_BEERS';
+export const RECEIVE_BEERS = 'RECEIVE_BEERS';
+export const BOOKMARK = 'BOOKMARK';

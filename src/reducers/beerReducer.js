@@ -1,6 +1,7 @@
 import {
     RECEIVE_BEERS,
-    REQUEST_BEERS
+    REQUEST_BEERS,
+    BOOKMARK
 } from '../constants/ActionTypes';
 
 function beerReducer(
@@ -21,6 +22,18 @@ function beerReducer(
                 items: action.beers,
                 lastUpdated: action.receivedAt
             })
+        case BOOKMARK:
+            let newItems = state.items.map((beer) => {
+                if (beer.id === action.id) {
+                    return { ...beer,
+                        isBookmarked: beer.isBookmarked === false ? true : false
+                    }
+                }
+                return beer;
+            })
+            return { ...state,
+                items: newItems
+            };
         default:
             return state
     }
