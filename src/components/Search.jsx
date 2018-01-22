@@ -15,17 +15,21 @@ class Search extends React.Component {
         this.setState({ searchValue: event.target.value })
     }
 
+    _handleKeyPress = (event) => {
+        if (event.key == 'Enter') {
+            this.props.onClick(this.state.searchValue)
+        }
+    }
+
 
     render() {
+        const searchIcon = { name: 'search', circular: true, link: true, onClick: () => this.props.onClick(this.state.searchValue) }
         return (
             <Container fluid style={styles.Container}>
                 <Form style={styles.Form}>
                     <Form.Field style={styles.SearchInput}>
-                        <Input value={this.state.searchValue} onChange={(event) => this._handleChange(event)} icon='search' placeholder="What's your poison?" />
+                        <Input loading={this.props.isFetching} value={this.state.searchValue} onKeyPress={(event) => this._handleKeyPress(event)} onChange={(event) => this._handleChange(event)} icon={searchIcon} placeholder="What's your poison?" />
                     </Form.Field>
-                    <div>
-                        <Button style={styles.Button} onClick={() => this.props.onClick(this.state.searchValue)}>Search</Button>
-                    </div>
                 </Form>
                 <div style={styles.Logo}>
                     <Header size='huge'>BeerDEX</Header>
@@ -42,11 +46,8 @@ const styles = {
         justifyContent: 'space-around'
     },
     SearchInput: {
-        flex: 6,
+        flex: 1,
 
-    },
-    Button: {
-        flex: 1
     },
     Form: {
         flex: 7,
@@ -67,6 +68,12 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isFetching: state.beers.isFetching,
+    }
+}
 
 
-export default connect(null, mapDispatchToProps)(Search);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

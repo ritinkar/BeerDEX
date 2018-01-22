@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 
 
 //stub for filters
@@ -7,8 +7,8 @@ class Filters extends React.Component {
 
     render() {
         return (
-            <Container>
-                <h1 > filters</h1>
+            <Container style={{ display: 'block' }}>
+                <Header size='huge' > filters</Header>
             </Container>
         );
     }

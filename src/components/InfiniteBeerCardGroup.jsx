@@ -1,8 +1,7 @@
 import React from 'react';
 import BeerCardGroup from './BeerCardGroup';
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react';
-
+import { Container } from 'semantic-ui-react';
 
 
 class InfiniteBeerCardGroup extends React.Component {
@@ -12,10 +11,11 @@ class InfiniteBeerCardGroup extends React.Component {
             //Load first 12 beers
             beers: this.props.beers.slice(0, 12),
             //if first load has less than 12 items then set hasMoreItems to false
-            hasMoreItems: this.props.beers.slice(0, 12).length<12?false:true,
+            hasMoreItems: this.props.beers.slice(0, 12).length < 12 ? false : true,
             nextIndex: 12
         };
-        this._loadBeers.bind(this);
+        this._loadBeers = this._loadBeers.bind(this);
+        this._onScroll = this._onScroll.bind(this);
     }
 
     //everytime this component recieves new props reset State
@@ -23,10 +23,18 @@ class InfiniteBeerCardGroup extends React.Component {
         if (this.props !== nextProps) {
             this.setState({
                 beers: nextProps.beers.slice(0, 12),
-                hasMoreItems: nextProps.beers.slice(0, 12).length<12?false:true,
+                hasMoreItems: nextProps.beers.slice(0, 12).length < 12 ? false : true,
                 nextIndex: 12
             });
         }
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this._onScroll, false);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this._onScroll, false);
     }
 
     // get the next 12 beers
@@ -40,17 +48,25 @@ class InfiniteBeerCardGroup extends React.Component {
             }));
     }
 
+
+    //load more items if we reach the end of the list
+    _onScroll() {
+        if (
+            (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 400) &&
+            this.state.hasMoreItems
+        ) {
+            this._loadBeers()
+        }
+    }
+
     render() {
 
         const Beers = (<BeerCardGroup beers={this.state.beers} />)
 
         return (
-
-            <div >
+            <Container fluid style={{margin : 20}}>
                 {Beers}
-                {this.state.hasMoreItems ? (<Button onClick={() => this._loadBeers()}>Load more beers</Button>) : null}
-            </div>
-
+            </Container>
         );
     }
 };
