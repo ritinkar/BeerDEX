@@ -1,6 +1,5 @@
 import React from 'react';
 import BeerCard from './BeerCard';
-import { connect } from 'react-redux';
 import { Card } from 'semantic-ui-react';
 
 
@@ -16,11 +15,6 @@ class BeerCardGroup extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        beers: state.beers.items
-    }
-}
 
 
-export default connect(mapStateToProps, null)(BeerCardGroup);
+export default BeerCardGroup;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from './Search';
 import Filters from './Filters';
-import BeerCardGroup from './BeerCardGroup';
+import InfiniteBeerCardGroup from './InfiniteBeerCardGroup';
 
 class Main extends React.Component {
 
@@ -10,7 +10,7 @@ class Main extends React.Component {
             <div>
                 <Search />
                 <Filters />
-                <BeerCardGroup />
+                <InfiniteBeerCardGroup />
             </div>
         );
     }
