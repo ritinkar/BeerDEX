@@ -64,7 +64,7 @@ class InfiniteBeerCardGroup extends React.Component {
         const Beers = (<BeerCardGroup beers={this.state.beers} />)
 
         return (
-            <Container fluid style={{margin : 15}}>
+            <Container fluid style={{ margin: 15 }}>
                 {Beers}
             </Container>
         );
@@ -72,8 +72,31 @@ class InfiniteBeerCardGroup extends React.Component {
 };
 
 const mapStateToProps = state => {
+//Apply filters one by one
+//Dont apply any filters if none are set
+
+    const beersFilteredByBookmarked = state.filters.bookmarkFilter ? state.beers.items.filter((beer) => beer.isBookmarked) : state.beers.items
+    const beersFilteredByCategories = state.filters.categoryFilters.length ?
+        beersFilteredByBookmarked.filter((beer) => beer.style ? state.filters.categoryFilters.includes(beer.style.categoryId) : false) :
+        beersFilteredByBookmarked
+    const beersFilteredByStrength = state.filters.strengthFilters.length ?
+        beersFilteredByCategories.filter((beer) => {
+            let strength = 0;
+            if (beer.abv <= 5) {
+                strength = 1;
+            }
+            else if (beer.abv > 5 && beer.abv < 8) {
+                strength = 2;
+            }
+            else if (beer.abv >= 8) {
+                strength = 3;
+            }
+            return state.filters.strengthFilters.includes(strength)
+        }) :
+        beersFilteredByCategories
+
     return {
-        beers: state.beers.items,
+        beers: beersFilteredByStrength,
         lastUpdated: state.beers.lastUpdated
     }
 }
