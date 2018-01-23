@@ -13,11 +13,11 @@ function beerReducer(
 ) {
     switch (action.type) {
         case REQUEST_BEERS:
-            return Object.assign({}, state, {
+            return ({ ...state,
                 isFetching: true
             })
         case RECEIVE_BEERS:
-            return Object.assign({}, state, {
+            return ({ ...state,
                 isFetching: false,
                 items: action.beers,
                 lastUpdated: action.receivedAt
@@ -31,9 +31,9 @@ function beerReducer(
                 }
                 return beer;
             })
-            return { ...state,
+            return ({ ...state,
                 items: newItems
-            };
+            });
         default:
             return state
     }
