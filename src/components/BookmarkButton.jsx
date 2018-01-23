@@ -1,18 +1,13 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
+import { Icon } from 'semantic-ui-react';
 import { bookmark } from '../actions/bookmark';
 import { connect } from 'react-redux';
 
 class BookmarkButton extends React.Component {
 
     render() {
-        let icon = null;
-        if (this.props.isBookmarked === true) {
-            icon = <FontAwesome name='bookmark' style={styles.active} />
-        }
-        else {
-            icon = <FontAwesome name='bookmark' />
-        }
+        const icon = this.props.isBookmarked === true ? <Icon name='bookmark' /> : <Icon name='remove bookmark' />;
+
         return (
             <div style={{ flex: 1, textAlign: 'center' }} onClick={() => this.props.onClick(this.props.id)}>
                 {icon}
@@ -21,11 +16,6 @@ class BookmarkButton extends React.Component {
     }
 }
 
-const styles = {
-    active: {
-        color: 'red'
-    }
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {
