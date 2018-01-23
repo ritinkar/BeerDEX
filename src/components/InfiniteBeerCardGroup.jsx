@@ -64,7 +64,7 @@ class InfiniteBeerCardGroup extends React.Component {
         const Beers = (<BeerCardGroup beers={this.state.beers} />)
 
         return (
-            <Container fluid style={{ margin: 15 }}>
+            <Container fluid style={{ margin: 15, backgroundColor: '#F0F0F0' }}>
                 {Beers}
             </Container>
         );
@@ -72,8 +72,8 @@ class InfiniteBeerCardGroup extends React.Component {
 };
 
 const mapStateToProps = state => {
-//Apply filters one by one
-//Dont apply any filters if none are set
+    //Apply filters one by one
+    //Dont apply any filters if none are set
 
     const beersFilteredByBookmarked = state.filters.bookmarkFilter ? state.beers.items.filter((beer) => beer.isBookmarked) : state.beers.items
     const beersFilteredByCategories = state.filters.categoryFilters.length ?

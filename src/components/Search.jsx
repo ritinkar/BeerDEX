@@ -43,7 +43,9 @@ class Search extends React.Component {
 const styles = {
     Container: {
         display: 'flex',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        padding: 10,
+        backgroundColor: '#F0F0F0'
     },
     SearchInput: {
         flex: 1,
