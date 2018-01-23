@@ -16,7 +16,7 @@ class Search extends React.Component {
     }
 
     _handleKeyPress = (event) => {
-        if (event.key == 'Enter') {
+        if (event.key === 'Enter') {
             this.props.onClick(this.state.searchValue)
         }
     }

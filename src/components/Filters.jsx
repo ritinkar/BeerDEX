@@ -1,16 +1,43 @@
 import React from 'react';
-import { Container, Header } from 'semantic-ui-react';
+import { Container, Accordion, Icon,Checkbox } from 'semantic-ui-react';
+import CategoriesFilter from './CategoriesFilter';
+import StrengthFilter from './StrengthFilter';
 
 
 //stub for filters
 class Filters extends React.Component {
+    state = { isOpen: false }
+
+    handleClick = (e) => {
+
+        this.setState((prevState, props) => ({ isOpen: prevState.isOpen ? false : true }))
+    }
 
     render() {
         return (
-            <Container style={{ display: 'block' }}>
-                <Header size='huge' > filters</Header>
-            </Container>
-        );
+            <Accordion>
+                <Accordion.Title active={this.state.isOpen === false} index={0} onClick={this.handleClick}>
+                    <Icon name='filter' />
+                    Filters
+        </Accordion.Title>
+                <Accordion.Content active={this.state.isOpen === true}>
+                    <div>
+                        <CategoriesFilter />
+                        <StrengthFilter />
+                        <Checkbox toggle label="Bookmarked" />
+                    </div>
+
+                </Accordion.Content>
+            </Accordion>
+        )
+    }
+}
+
+const styles = {
+    Container: {
+        display: 'flex',
+        textAlign: 'center',
+        margin: 10
     }
 }
 

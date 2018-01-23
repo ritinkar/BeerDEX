@@ -64,7 +64,7 @@ class InfiniteBeerCardGroup extends React.Component {
         const Beers = (<BeerCardGroup beers={this.state.beers} />)
 
         return (
-            <Container fluid style={{margin : 20}}>
+            <Container fluid style={{margin : 15}}>
                 {Beers}
             </Container>
         );
