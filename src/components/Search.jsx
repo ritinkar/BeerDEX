@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button, Container, Header, Form } from 'semantic-ui-react';
+import { Input, Container, Header, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { fetchBeers } from '../actions/search';
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container, Accordion, Icon,Checkbox } from 'semantic-ui-react';
+import { Container, Accordion, Icon, Checkbox } from 'semantic-ui-react';
 import CategoriesFilter from './CategoriesFilter';
 import StrengthFilter from './StrengthFilter';
+import BookmarkFilterToggle from './BookmarkFilterToggle';
 
 
 //stub for filters
@@ -24,7 +25,7 @@ class Filters extends React.Component {
                     <div>
                         <CategoriesFilter />
                         <StrengthFilter />
-                        <Checkbox toggle label="Bookmarked" />
+                        <BookmarkFilterToggle />
                     </div>
 
                 </Accordion.Content>
