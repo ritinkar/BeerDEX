@@ -83,13 +83,13 @@ const mapStateToProps = state => {
         beersFilteredByCategories.filter((beer) => {
             let strength = 0;
             if (beer.abv <= 5) {
-                strength = 1;
+                strength = 3;
             }
             else if (beer.abv > 5 && beer.abv < 8) {
                 strength = 2;
             }
             else if (beer.abv >= 8) {
-                strength = 3;
+                strength = 1;
             }
             return state.filters.strengthFilters.includes(strength)
         }) :
