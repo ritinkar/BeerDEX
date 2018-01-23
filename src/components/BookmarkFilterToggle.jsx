@@ -18,11 +18,19 @@ class BookmarkFilterToggle extends React.Component {
 
     render() {
         return (
-            <Checkbox toggle label="Show only Bookmarked" defaultChecked={this.state.isOn} onClick={() => this._onClick()} />
+            <div style={styles.Element}>
+                <Checkbox toggle label="Show only Bookmarked" defaultChecked={this.state.isOn} onClick={() => this._onClick()} />
+            </div>
         )
     }
 }
 
+const styles = {
+    Element: {
+        flex: 1,
+        margin: 10
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {

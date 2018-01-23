@@ -18,7 +18,9 @@ class StrengthCheckbox extends React.Component {
 
     render() {
         return (
-            <Checkbox label={this.props.name} defaultChecked={this.state.isOn} onClick={() => this._onClick()} />
+            <div style={{ flex: 1 }}>
+                <Checkbox label={this.props.name} defaultChecked={this.state.isOn} onClick={() => this._onClick()} />
+            </div>
         )
     }
 }
