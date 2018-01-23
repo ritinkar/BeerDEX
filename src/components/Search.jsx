@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Container, Header, Form } from 'semantic-ui-react';
+import { Input, Header, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { fetchBeers } from '../actions/search';
 
@@ -25,7 +25,7 @@ class Search extends React.Component {
     render() {
         const searchIcon = { name: 'search', circular: true, link: true, onClick: () => this.props.onClick(this.state.searchValue) }
         return (
-            <Container fluid style={styles.Container}>
+            <div style={styles.Container}>
                 <Form style={styles.Form}>
                     <Form.Field style={styles.SearchInput}>
                         <Input loading={this.props.isFetching} value={this.state.searchValue} onKeyPress={(event) => this._handleKeyPress(event)} onChange={(event) => this._handleChange(event)} icon={searchIcon} placeholder="What's your poison?" />
@@ -35,7 +35,7 @@ class Search extends React.Component {
                     <Header size='huge'>BeerDEX</Header>
                 </div>
 
-            </Container>
+            </div>
         );
     }
 }
@@ -47,6 +47,7 @@ const styles = {
     },
     SearchInput: {
         flex: 1,
+        marginLeft: 10
 
     },
     Form: {

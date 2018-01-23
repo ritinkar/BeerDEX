@@ -20,7 +20,7 @@ class Filters extends React.Component {
     render() {
         return (
             <Accordion>
-                <Accordion.Title active={this.state.isOpen === false} index={0} onClick={this._onClick}>
+                <Accordion.Title style={styles.Title} active={this.state.isOpen === false} index={0} onClick={this._onClick}>
                     <Icon name='filter' />
                     Filters
                 </Accordion.Title>
@@ -44,6 +44,9 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'flex-start',
         margin: 10,
+    },
+    Title: {
+        textAlign: 'center'
     }
 }
 
