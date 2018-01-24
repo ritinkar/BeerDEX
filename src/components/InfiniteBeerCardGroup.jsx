@@ -18,14 +18,20 @@ class InfiniteBeerCardGroup extends React.Component {
         this._onScroll = this._onScroll.bind(this);
     }
 
-    //everytime this component recieves new props reset State
+    //everytime this component recieves new props chek if beerids have changed or lastupdated has changed 
+    //if they have then reset State
     componentWillReceiveProps(nextProps) {
-        if (this.props !== nextProps) {
+        if (this.props.lastUpdated !== nextProps.lastUpdated ||
+            JSON.stringify(this.props.beers.map(beer => beer.id)) !== JSON.stringify(nextProps.beers.map(beer => beer.id))
+        ) {
             this.setState({
                 beers: nextProps.beers.slice(0, 12),
                 hasMoreItems: nextProps.beers.slice(0, 12).length < 12 ? false : true,
                 nextIndex: 12
-            });
+            })
+        }
+        else {
+            this.setState(prevState => { return ({ ...prevState, beers: nextProps.beers.slice(0, prevState.nextIndex) }) })
         }
     }
 
