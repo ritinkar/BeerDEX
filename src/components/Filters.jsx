@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Accordion, Icon } from 'semantic-ui-react';
 import CategoriesFilter from './CategoriesFilter';
 import StrengthFilter from './StrengthFilter';
-import BookmarkFilterToggle from './BookmarkFilterToggle';
+import BookmarkLocationContainer from './BookmarkLocationContainer';
 
 
 //stub for filters
@@ -28,7 +28,7 @@ class Filters extends React.Component {
                     <Container fluid style={styles.Container}>
                         <CategoriesFilter style={{ flex: 3 }} />
                         <StrengthFilter style={{ flex: 2 }} />
-                        <BookmarkFilterToggle style={{ flex: 1 }} />
+                        <BookmarkLocationContainer style={{ flex: 1 }} />
                     </Container>
 
                 </Accordion.Content>

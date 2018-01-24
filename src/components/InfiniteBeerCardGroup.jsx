@@ -95,8 +95,38 @@ const mapStateToProps = state => {
         }) :
         beersFilteredByCategories
 
+    const beersFilteredByLocation = state.filters.location.length ?
+        beersFilteredByStrength.filter((beer) => {
+            if (beer.breweries) {
+                const breweryLocations = beer.breweries.map((brewery) => {
+                    if (brewery.locations) {
+                        const regions = brewery.locations.map((region) => {
+
+                            return region.region === state.filters.location ? true : false
+                        }
+                        )
+                        return regions;
+                    }
+                    else {
+                        return false;
+                    }
+                })
+                function flatten(arr) {
+                    return arr.reduce(function (flat, toFlatten) {
+                        return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+                    }, []);
+                }
+                return flatten(breweryLocations).reduce((acc, cur) => acc || cur)
+            }
+            else {
+                return false;
+            }
+
+        }) :
+        beersFilteredByStrength
+
     return {
-        beers: beersFilteredByStrength,
+        beers: beersFilteredByLocation,
         lastUpdated: state.beers.lastUpdated
     }
 }

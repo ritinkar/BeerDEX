@@ -32,7 +32,7 @@ class Search extends React.Component {
                     </Form.Field>
                 </Form>
                 <div style={styles.Logo}>
-                    <Header size='huge'>BeerDEX</Header>
+                    <Header size='huge' color='grey'>BeerDEX</Header>
                 </div>
 
             </div>

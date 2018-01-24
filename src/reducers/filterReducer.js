@@ -1,14 +1,16 @@
 import {
     FILTER_BY_BOOKMARK,
     FILTER_BY_STRENGTH,
-    FILTER_BY_CATEGORY
+    FILTER_BY_CATEGORY,
+    FILTER_BY_LOCATION
 } from '../constants/ActionTypes';
 
 function filterReducer(
     state = {
         categoryFilters: [],
         strengthFilters: [],
-        bookmarkFilter: false
+        bookmarkFilter: false,
+        location: ""
     },
     action
 ) {
@@ -28,6 +30,11 @@ function filterReducer(
                 ...state,
                 strengthFilters: state.strengthFilters.some((id) => id === action.id) ?
                     state.strengthFilters.filter((id) => id !== action.id) : [...state.strengthFilters, action.id]
+            })
+        case FILTER_BY_LOCATION:
+            return ({
+                ...state,
+                location: action.location
             })
         default:
             return state
