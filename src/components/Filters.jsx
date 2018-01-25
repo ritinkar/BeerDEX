@@ -19,20 +19,22 @@ class Filters extends React.Component {
 
     render() {
         return (
-            <Accordion>
-                <Accordion.Title style={styles.Title} active={this.state.isOpen === false} index={0} onClick={this._onClick}>
-                    <Icon name='filter' />
-                    Filters
+            <div style={{backgroundColor:'white'}}>
+                <Accordion>
+                    <Accordion.Title style={styles.Title} active={this.state.isOpen === false} index={0} onClick={this._onClick}>
+                        <Icon name='filter' />
+                        Filters
                 </Accordion.Title>
-                <Accordion.Content active={this.state.isOpen === true} >
-                    <Container fluid style={styles.Container}>
-                        <CategoriesFilter style={{ flex: 3 }} />
-                        <StrengthFilter style={{ flex: 2 }} />
-                        <BookmarkLocationContainer style={{ flex: 1 }} />
-                    </Container>
+                    <Accordion.Content active={this.state.isOpen === true} >
+                        <Container fluid style={styles.Container}>
+                            <CategoriesFilter style={{ flex: 3 }} />
+                            <StrengthFilter style={{ flex: 2 }} />
+                            <BookmarkLocationContainer style={{ flex: 1 }} />
+                        </Container>
 
-                </Accordion.Content>
-            </Accordion>
+                    </Accordion.Content>
+                </Accordion>
+            </div>
         )
     }
 }
