@@ -107,8 +107,12 @@ const mapStateToProps = state => {
                 const breweryLocations = beer.breweries.map((brewery) => {
                     if (brewery.locations) {
                         const regions = brewery.locations.map((region) => {
-
-                            return region.region === state.filters.location ? true : false
+                            if (region.region) {
+                                return region.region.toLowerCase() === state.filters.location.toLowerCase() ? true : false
+                            }
+                            else {
+                                return false
+                            }
                         }
                         )
                         return regions;
