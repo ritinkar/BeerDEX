@@ -1,7 +1,7 @@
 import React from 'react';
 import { filterByLocation } from '../actions/filter';
 import { connect } from 'react-redux';
-import { Input } from 'semantic-ui-react';
+import { Input, Icon } from 'semantic-ui-react';
 
 class LocationFilter extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class LocationFilter extends React.Component {
         }
     }
 
-    _handleChange(event) {
+    _handleChange = (event) => {
         this.setState({ location: event.target.value })
     }
 
@@ -21,12 +21,19 @@ class LocationFilter extends React.Component {
         }
     }
 
+    _handleClear = (event) => {
+        this.setState({ location: "" })
+        this.props.onClick("")
+
+    }
+
 
 
     render() {
+        const clearIcon = <Icon name='cancel' link={true} onClick={(event) => this._handleClear(event)} />
         return (
             <div style={styles.Element}>
-                <Input list='locations' value={this.state.location} onKeyPress={(event) => this._handleKeyPress(event)} onChange={(event) => this._handleChange(event)} placeholder='Filter by location' />
+                <Input fluid icon={this.state.location ? clearIcon : null} list='locations' value={this.state.location} onKeyPress={(event) => this._handleKeyPress(event)} onChange={(event) => this._handleChange(event)} placeholder='Filter by location' />
                 <datalist id='locations'>
                     {this.props.locations.map((location) => (<option value={location} key={location} />))
                     }
