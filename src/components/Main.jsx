@@ -11,8 +11,8 @@ class Main extends React.Component {
             <div>
                 <div style={styles.StickyDiv}>
                     <Search />
-                    <Filters />
                 </div>
+                <Filters />
                 <InfiniteBeerCardGroup />
                 <Footer />
             </div >
@@ -24,7 +24,7 @@ const styles = {
     StickyDiv: {
         position: 'sticky',
         top: 0,
-        zIndex: 1
+        zIndex: 9999
 
     }
 }
