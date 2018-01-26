@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Accordion, Icon, Button } from 'semantic-ui-react';
+import { Container, Accordion, Icon, Button, Divider } from 'semantic-ui-react';
 import CategoriesFilter from './CategoriesFilter';
 import StrengthFilter from './StrengthFilter';
 import BookmarkLocationContainer from './BookmarkLocationContainer';
@@ -32,11 +32,13 @@ class Filters extends React.Component {
                         Filters
                 </Accordion.Title>
                     <Accordion.Content active={this.state.isOpen === true} >
+                        <Divider />
                         <Container fluid style={styles.Container}>
                             <CategoriesFilter style={{ flex: 3 }} />
                             <StrengthFilter style={{ flex: 2 }} />
                             <BookmarkLocationContainer style={{ flex: 1 }} />
                         </Container>
+                        <Divider />
                         <div style={styles.ButtonsContainer}>
                             <Button content='Reset filters' onClick={() => this.props.onClick()} />
                             <Button content='Collapse filters' onClick={() => this._handleClose()} />
@@ -58,13 +60,14 @@ const styles = {
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        margin: 10,
+        padding: 10,
     },
     Title: {
         textAlign: 'center'
     },
     ButtonsContainer: {
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: 10
     }
 }
 
