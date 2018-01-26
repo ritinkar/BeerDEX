@@ -12,7 +12,7 @@ class LocationFilter extends React.Component {
     }
     //reset state when component recieves new props
     componentWillReceiveProps(nextProps) {
-        if (this.props.location !== nextProps.location) {
+        if (this.state.location !== nextProps.location) {
             this.setState({
                 location: nextProps.location
             })
