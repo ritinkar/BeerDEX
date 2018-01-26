@@ -2,16 +2,19 @@ import {
     FILTER_BY_BOOKMARK,
     FILTER_BY_STRENGTH,
     FILTER_BY_CATEGORY,
-    FILTER_BY_LOCATION
+    FILTER_BY_LOCATION,
+    RESET_FILTERS
 } from '../constants/ActionTypes';
 
+const initialState = {
+    categoryFilters: [],
+    strengthFilters: [],
+    bookmarkFilter: false,
+    location: ""
+}
+
 function filterReducer(
-    state = {
-        categoryFilters: [],
-        strengthFilters: [],
-        bookmarkFilter: false,
-        location: ""
-    },
+    state = initialState,
     action
 ) {
     switch (action.type) {
@@ -36,6 +39,8 @@ function filterReducer(
                 ...state,
                 location: action.location
             })
+        case RESET_FILTERS:
+            return initialState
         default:
             return state
     }

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Container, Accordion, Icon } from 'semantic-ui-react';
+import { Container, Accordion, Icon, Button } from 'semantic-ui-react';
 import CategoriesFilter from './CategoriesFilter';
 import StrengthFilter from './StrengthFilter';
 import BookmarkLocationContainer from './BookmarkLocationContainer';
+import { resetFilters } from '../actions/filter';
+import { connect } from 'react-redux';
 
 
-//stub for filters
 class Filters extends React.Component {
     constructor(props) {
         super(props)
@@ -17,9 +18,14 @@ class Filters extends React.Component {
         this.setState((prevState, props) => ({ isOpen: prevState.isOpen ? false : true }))
     }
 
+    _handleClose = (event) => {
+        this.setState({ isOpen: false })
+    }
+
+
     render() {
         return (
-            <div style={{backgroundColor:'white'}}>
+            <div style={{ backgroundColor: 'white' }}>
                 <Accordion>
                     <Accordion.Title style={styles.Title} active={this.state.isOpen === false} index={0} onClick={this._onClick}>
                         <Icon name='filter' />
@@ -31,6 +37,10 @@ class Filters extends React.Component {
                             <StrengthFilter style={{ flex: 2 }} />
                             <BookmarkLocationContainer style={{ flex: 1 }} />
                         </Container>
+                        <div>
+                            <Button content='Reset filters' onClick={() => this.props.onClick()} />
+                            <Button content='Collapse filters' onClick={() => this._handleClose()} />
+                        </div>
 
                     </Accordion.Content>
                 </Accordion>
@@ -53,6 +63,15 @@ const styles = {
 }
 
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onClick: () => {
+            dispatch(resetFilters())
+        }
+    }
+}
 
 
-export default Filters;
+
+
+export default connect(null, mapDispatchToProps)(Filters);

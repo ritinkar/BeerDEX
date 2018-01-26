@@ -4,22 +4,11 @@ import { connect } from 'react-redux';
 import { Checkbox } from 'semantic-ui-react';
 
 class BookmarkFilterToggle extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isOn: false
-        }
-    }
-
-    _onClick() {
-        this.setState((prevState) => ({ isOn: prevState.isOn ? false : true }))
-        this.props.onClick()
-    }
 
     render() {
         return (
             <div style={styles.Element}>
-                <Checkbox toggle label="Show only Bookmarked" defaultChecked={this.state.isOn} onClick={() => this._onClick()} />
+                <Checkbox toggle label="Show only Bookmarked" checked={this.props.filterState} onClick={() => this.props.onClick()} />
             </div>
         )
     }
@@ -41,5 +30,16 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
+const mapStateToProps = state => {
 
-export default connect(null, mapDispatchToProps)(BookmarkFilterToggle);
+    return {
+        filterState: state.filters.bookmarkFilter
+
+    }
+}
+
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookmarkFilterToggle);

@@ -7,7 +7,15 @@ class LocationFilter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            location: ""
+            location: this.props.location
+        }
+    }
+    //reset state when component recieves new props
+    componentWillReceiveProps(nextProps) {
+        if (this.props.location !== nextProps.location) {
+            this.setState({
+                location: nextProps.location
+            })
         }
     }
 
@@ -21,16 +29,10 @@ class LocationFilter extends React.Component {
         }
     }
 
-    _handleClear = (event) => {
-        this.setState({ location: "" })
-        this.props.onClick("")
-
-    }
-
 
 
     render() {
-        const clearIcon = <Icon name='cancel' link={true} onClick={(event) => this._handleClear(event)} />
+        const clearIcon = <Icon name='cancel' link={true} onClick={() => this.props.onClick("")} />
         return (
             <div style={styles.Element}>
                 <Input fluid icon={this.state.location ? clearIcon : null} list='locations' value={this.state.location} onKeyPress={(event) => this._handleKeyPress(event)} onChange={(event) => this._handleChange(event)} placeholder='Filter by location' />
@@ -90,7 +92,8 @@ const mapStateToProps = state => {
     const locations = Array.from(new Set(locationsWithDuplicates));
 
     return {
-        locations
+        locations,
+        location: state.filters.location
 
     }
 }

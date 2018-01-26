@@ -4,22 +4,11 @@ import { connect } from 'react-redux';
 import { Checkbox } from 'semantic-ui-react';
 
 class CategoriesCheckbox extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isOn: false
-        }
-    }
-
-    _onClick() {
-        this.setState((prevState) => ({ isOn: prevState.isOn ? false : true }))
-        this.props.onClick(this.props.id)
-    }
 
     render() {
         return (
             <div style={{ flex: 1 }}>
-                <Checkbox label={this.props.name} defaultChecked={this.state.isOn} onClick={() => this._onClick()} />
+                <Checkbox label={this.props.name} checked={this.props.filterState} onClick={() => this.props.onClick(this.props.id)} />
             </div>
         )
 
@@ -35,6 +24,14 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+
+    return {
+        filterState: state.filters.categoryFilters.includes(ownProps.id)
+
+    }
+}
 
 
-export default connect(null, mapDispatchToProps)(CategoriesCheckbox);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesCheckbox);

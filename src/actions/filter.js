@@ -2,7 +2,8 @@ import {
     FILTER_BY_BOOKMARK,
     FILTER_BY_STRENGTH,
     FILTER_BY_CATEGORY,
-    FILTER_BY_LOCATION
+    FILTER_BY_LOCATION,
+    RESET_FILTERS
 } from '../constants/ActionTypes';
 
 export function filterByCategory(id) {
@@ -29,5 +30,11 @@ export function filterByLocation(location) {
 export function filterByBookmark() {
     return {
         type: FILTER_BY_BOOKMARK,
+    }
+}
+
+export function resetFilters() {
+    return {
+        type: RESET_FILTERS
     }
 }
