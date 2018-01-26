@@ -70,12 +70,19 @@ class InfiniteBeerCardGroup extends React.Component {
         const Beers = (<BeerCardGroup beers={this.state.beers} />)
 
         return (
-            <Container fluid style={{ margin: 15, backgroundColor: '#F0F0F0' }}>
+            <Container fluid style={styles.MainContainer}>
                 {Beers}
             </Container>
         );
     }
 };
+
+const styles = {
+    MainContainer: {
+        margin: 15,
+        backgroundColor: '#F0F0F0'
+    }
+}
 
 const mapStateToProps = state => {
     //Apply filters one by one

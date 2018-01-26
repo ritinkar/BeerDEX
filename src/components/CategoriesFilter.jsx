@@ -25,7 +25,7 @@ class CategoriesFilter extends React.Component {
         <Accordion.Content active={this.state.isOpen === true} >
           <Container fluid style={styles.Container} >
             {
-              FilterTypes.Categories.map((category) => <CategoriesCheckbox name={category.name} id={category.id} key={category.id} style={styles.Checkboxes} />
+              FilterTypes.Categories.map((category) => <CategoriesCheckbox name={category.name} id={category.id} key={category.id} />
               )
             }
           </Container>

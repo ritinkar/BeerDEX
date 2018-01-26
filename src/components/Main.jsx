@@ -9,7 +9,7 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <div style={{ position: 'sticky', top: 0, zIndex:10 }}>
+                <div style={styles.StickyDiv}>
                     <Search />
                     <Filters />
                 </div>
@@ -17,6 +17,15 @@ class Main extends React.Component {
                 <Footer />
             </div >
         );
+    }
+}
+
+const styles = {
+    StickyDiv: {
+        position: 'sticky',
+        top: 0,
+        zIndex: 1
+
     }
 }
 

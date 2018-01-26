@@ -9,10 +9,17 @@ class BookmarkButton extends React.Component {
         const icon = this.props.isBookmarked === true ? <Icon name='bookmark' /> : <Icon name='remove bookmark' />;
 
         return (
-            <div style={{ flex: 1, textAlign: 'center' }} onClick={() => this.props.onClick(this.props.id)}>
+            <div style={styles.Element} onClick={() => this.props.onClick(this.props.id)}>
                 {icon}
             </div>
         )
+    }
+}
+
+const styles = {
+    Element: {
+        flex: 1,
+        textAlign: 'center'
     }
 }
 

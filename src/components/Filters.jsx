@@ -25,7 +25,7 @@ class Filters extends React.Component {
 
     render() {
         return (
-            <div style={{ backgroundColor: 'white' }}>
+            <div style={styles.MainContainer}>
                 <Accordion>
                     <Accordion.Title style={styles.Title} active={this.state.isOpen === false} index={0} onClick={this._onClick}>
                         <Icon name='filter' />
@@ -37,7 +37,7 @@ class Filters extends React.Component {
                             <StrengthFilter style={{ flex: 2 }} />
                             <BookmarkLocationContainer style={{ flex: 1 }} />
                         </Container>
-                        <div>
+                        <div style={styles.ButtonsContainer}>
                             <Button content='Reset filters' onClick={() => this.props.onClick()} />
                             <Button content='Collapse filters' onClick={() => this._handleClose()} />
                         </div>
@@ -50,6 +50,9 @@ class Filters extends React.Component {
 }
 
 const styles = {
+    MainContainer: {
+        backgroundColor: 'white'
+    },
     Container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -58,6 +61,9 @@ const styles = {
         margin: 10,
     },
     Title: {
+        textAlign: 'center'
+    },
+    ButtonsContainer: {
         textAlign: 'center'
     }
 }

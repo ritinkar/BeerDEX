@@ -4,7 +4,7 @@ import ActionBar from './ActionBar';
 
 const BeerCard = (props) => (
     <Card >
-        <Image style={{ height: 250, objectFit: 'cover' }} src={props.labels ? props.labels.large : "https://i.imgur.com/loNMltH.jpg"} />
+        <Image style={styles.Image} src={props.labels ? props.labels.large : "https://i.imgur.com/loNMltH.jpg"} />
         <Card.Content>
             <Card.Header>
                 {props.nameDisplay}
@@ -18,5 +18,12 @@ const BeerCard = (props) => (
         </Card.Content>
     </Card>
 )
+
+const styles = {
+    Image: {
+        height: 250,
+        objectFit: 'cover'
+    }
+}
 
 export default BeerCard;
